@@ -1,14 +1,14 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-const RequireAuth = ({ children, redirectTo, user }) => {
+export default function RequireAuth({ children, user }) {
+  const location = useLocation()
+
   return user ? (
-    children
+    <Outlet />
   ) : (
-    <motion.div exit='undefined'>
-      <Navigate to={redirectTo} replace />
+    <motion.div>
+      <Navigate to='/login' replace state={{ from: location.pathname }} />
     </motion.div>
   )
 }
-
-export default RequireAuth

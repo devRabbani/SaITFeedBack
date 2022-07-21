@@ -4,12 +4,14 @@ import SkeletonElements from './skeletonElements'
 
 export default function SkeletonHome() {
   return (
-    <div className='wrapper home'>
+    <div className='home'>
       <div className='skeletonUsn'>
         <SkeletonElements type='h2Text' />
-        <SkeletonElements type='title' />
-        <SkeletonElements type='text' />
-        <SkeletonElements type='text' />
+        <div className='skFlex'>
+          <SkeletonElements type='title' />
+          <SkeletonElements type='title' />
+          <SkeletonElements type='title' />
+        </div>
         <Shimmer />
       </div>
       <div className='skeletonMainWrapper'>

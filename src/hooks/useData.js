@@ -2,19 +2,18 @@ import { collection, doc, onSnapshot, query, where } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { db } from '../lib/firebase'
 
-const useData = (uid) => {
+const useData = (usn) => {
   const [userData, setUserData] = useState({})
   const [subLists, setSubLists] = useState([])
-  const userQ = query(collection(db, 'students'), where('uid', '==', uid))
 
   useEffect(() => {
-    const unsub = onSnapshot(userQ, (snapshot) => {
-      if (!snapshot.empty) {
-        setUserData(snapshot.docs[0].data())
+    const unsub = onSnapshot(doc(db, 'students', usn), (snapshot) => {
+      if (snapshot.exists()) {
+        setUserData(snapshot.data())
       }
     })
     return () => unsub()
-  }, [uid])
+  }, [usn])
 
   useEffect(() => {
     let unsub
