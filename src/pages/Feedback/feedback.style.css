@@ -14,42 +14,35 @@
 }
 
 /* Inside Feedback Section */
-/* .feedbackSection {
+.feedbackSection {
   text-align: center;
-  margin: 20px auto 40px;
+  /* margin: 20px auto 40px;
   padding: 25px 12px;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
   border-radius: 7px;
   background-color: #f7f7f7;
   width: 98%;
-  max-width: 589px;
-} */
-.feedbackSection {
-  text-align: center;
-  margin: 0px auto;
-  padding: 0 12px;
-  border-radius: 7px;
-  width: 98%;
-  max-width: 589px;
+  max-width: 589px; */
 }
 
-.teacherInfo {
-  padding: 13px 15px;
-  width: 90%;
-  max-width: 604px;
-  margin: 18px auto;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-  border: 4px solid white;
+.feedbackSection .answers {
+  max-width: 569px;
+  margin: 0 auto;
 }
 
-.teacherInfo .teacherName {
-  font-size: 1.4rem;
+.feedback .usnCard {
+  margin-bottom: 40px;
+}
+.feedback .topBar {
+  font-size: 1.1rem;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+.feedback .topBar p:nth-child(1) {
+  /* flex-basis: 100%; */
+  /* font-size: 1.5rem; */
+  color: #6657e7;
   font-weight: 600;
-  color: #5e5e5e;
-  margin-bottom: 4px;
-}
-.teacherInfo .sub {
-  font-size: 0.9rem;
 }
 
 .finishCard {
@@ -71,7 +64,7 @@
 
 .question {
   font-size: 1.35rem;
-  margin: 10px auto 16px;
+  margin: 10px auto 26px;
   font-weight: 500;
   color: rgb(71, 2, 88);
   line-height: 29px;
@@ -235,9 +228,7 @@ span.star {
     padding: 20px 30px;
     margin: 30px auto 25px;
   }
-  .feedbackSection {
-    padding: 0 25px 50px;
-  }
+
   .feedback {
     min-height: 90vh;
   }

@@ -35,155 +35,35 @@ const Login = ({ user }) => {
   useTitle('Home | SaITFeedback')
 
   //States
-  const [inputData, setInputData] = useState({
-    usn: '',
-    otp: '',
-  })
-  const [final, setFinal] = useState()
-  const [show, setShow] = useState(false)
-  // const [userData, setUserData] = useState({})
-  const [error, setError] = useState('')
-  const [succes, setSucces] = useState('')
+  const [usn, setUsn] = useState('')
   const [loading, setLoading] = useState(false)
-  const [isModal, setIsModal] = useState(false)
-  const [isNew, setIsNew] = useState(true)
-
-  const inputRef = useRef()
-  const { usn, otp } = inputData
-  // const { user } = useAuthListner()
-  const navigate = useNavigate()
-  let pno = ''
-
   const isValid = usn === '' || usn.length < 10
-  const otpInvalid = otp === '' || otp.length < 6
-
-  //Handling Inputs
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setError('')
-    setInputData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  // Give Notice Modal
-  const handleModal = (e) => {
-    e.preventDefault()
-    setIsModal(true)
-  }
-
-  // const handleSubmitToast = async () => {
-  //   toast.promise(await handleSubmit(), {
-  //     loading: 'Checking the database for information',
-  //     success: 'Fpund the data',
-  //     error: 'Not found any data',
-  //   })
-  // }
-
-  //asubmit promis
-
-  // Submit
+  const navigate = useNavigate()
   const handleSubmit = async (e) => {
-    // e.preventDefault()
-    setLoading(true)
-    const toastId = toast.loading('Collecting data from the database')
-    const data = await studentWithUsn(usn)
-
-    if (data) {
-      pno = data.number
-      if (data?.uid) {
-        setIsNew(false)
-      }
-    }
-
-    // If Phone Number Found
-    if (pno) {
-      let verify = new RecaptchaVerifier('captcha', { size: 'invisible' }, auth)
-      toast.success(<b>Student information found</b>, {
-        id: toastId,
-      })
-      const toastId2 = toast.loading('Sending the otp...')
-      signInWithPhoneNumber(auth, '+91' + pno, verify)
-        .then((confirm) => {
-          setLoading(false)
-          setError('')
-          setSucces(
-            `OTP sent to the phone number ending with +91 XXXXXXXX${pno.slice(
-              -2
-            )}`
-          )
-          setFinal(confirm)
-          setShow(true)
-          toast.success(<b>OTP sent to the registered number</b>, {
-            id: toastId2,
-          })
-          inputRef.current.focus()
-        })
-        .catch((err) => {
-          setLoading(false)
-          toast.error(<b>OTP sending failed, Try again</b>, {
-            id: toastId2,
-          })
-          console.error(err)
-          setInputData({
-            usn: '',
-            otp: '',
-          })
-          setSucces('')
-          setError('Something went wrong , Try Again!')
-          window.location.reload()
-        })
-    } else {
-      setLoading(false)
-      setSucces('')
-      toast.error(<b>No data found for USN: {usn.trim().toUpperCase()}</b>, {
-        id: toastId,
-      })
-      setError('No info found USN incorrect , Please contact department')
-    }
-  }
-
-  // Verify
-  const handleVerify = (e) => {
     e.preventDefault()
-    const toastId3 = toast.loading('Verifying...')
     setLoading(true)
-    if (otp === null || final === null) return
-    final
-      .confirm(otp)
-      .then(async (result) => {
-        window.grecaptcha = null
-        window.recaptcha = null
-        if (isNew) {
-          // New User
-          await updateInfo(result.user.uid, usn)
-          setLoading(false)
-          toast.success(<b>Verification Complete</b>, {
-            id: toastId3,
-          })
-          navigate('/')
-        } else {
-          setLoading(false)
-          toast.success(<b>Verification Complete</b>, {
-            id: toastId3,
-          })
-          navigate('/')
-        }
-      })
-      .catch((err) => {
-        console.error(err)
-        setLoading(false)
-        setInputData((prev) => ({
-          ...prev,
-          otp: '',
-        }))
-        setSucces('')
-        setError('OTP did not matched Try Again !!')
-        toast.error(<b>Verification Failed</b>, {
-          id: toastId3,
+    const toastId = toast.loading(`Collecting data for USN: ${usn}`)
+    try {
+      const data = await studentWithUsn(usn)
+      console.log(data)
+      if (data) {
+        toast.success('Authentication Successfull', {
+          id: toastId,
         })
+        await sessionStorage.setItem('authUser', JSON.stringify(data))
+        navigate('/')
+      } else {
+        toast.error('No Data Found for this USN', {
+          id: toastId,
+        })
+      }
+    } catch (error) {
+      toast.error('Something Went Wrong, Try Again', {
+        id: toastId,
       })
+      console.log(error)
+    }
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -201,75 +81,34 @@ const Login = ({ user }) => {
         exit='exit'
         className='wrapper login'
       >
-        <form>
-          {error && <p className='errorMsg'>{error}</p>}
-          {succes && <p className='succesMsg'>{succes}</p>}
+        <form onSubmit={handleSubmit}>
           <h2>Authentication</h2>
-          {show ? (
-            <>
-              <div className='formDiv'>
-                <input
-                  name='otp'
-                  ref={inputRef}
-                  className='formInput'
-                  placeholder=' '
-                  value={otp}
-                  maxLength='6'
-                  required
-                  onChange={handleChange}
-                />
-                <label className='formLabel'>Enter OTP</label>
-              </div>
 
-              <button
-                onClick={handleVerify}
-                className={`btn ${otpInvalid ? 'disabled' : ''}`}
-                disabled={otpInvalid || loading}
-              >
-                {loading ? 'loading...' : 'Verify'}
-              </button>
-              <p className='captchaText'>Hidden Auto ReCaptcha Verifier</p>
-            </>
-          ) : (
-            <>
-              <div className='formDiv'>
-                <input
-                  name='usn'
-                  className='formInput'
-                  placeholder=' '
-                  value={usn}
-                  required
-                  maxLength='10'
-                  autoComplete='off'
-                  onChange={handleChange}
-                />
-                <label className='formLabel'>Enter Your USN</label>
-              </div>
+          <div className='formDiv'>
+            <input
+              name='usn'
+              className='formInput'
+              placeholder=' '
+              value={usn}
+              required
+              maxLength='10'
+              autoComplete='off'
+              onChange={(e) => setUsn(e.target.value)}
+            />
+            <label className='formLabel'>Enter Your USN</label>
+          </div>
 
-              <div id='captcha' className='captcha'></div>
+          <div id='captcha' className='captcha'></div>
 
-              <button
-                onClick={handleModal}
-                className={`btn ${isValid ? 'disabled' : ''}`}
-                disabled={isValid || loading}
-              >
-                {loading ? 'Please Wait...' : 'Next'}
-              </button>
-              <p className='captchaText'>Hidden Auto ReCaptcha Verifier</p>
-            </>
-          )}
+          <button
+            type='submit'
+            className={`btn ${isValid ? 'disabled' : ''}`}
+            disabled={isValid || loading}
+          >
+            {loading ? 'Please Wait...' : 'Next'}
+          </button>
         </form>
-
-        {/* <button onClick={() => studentWithUid("abc")}>Update</button> */}
-        {/* <button className="signOut" onClick={handleSignout}>
-        SignOut---Only for testing
-      </button> */}
       </motion.div>
-      <AnimatePresence>
-        {isModal && (
-          <Modal setIsModal={setIsModal} handleSubmit={handleSubmit} />
-        )}
-      </AnimatePresence>
     </div>
   )
 }

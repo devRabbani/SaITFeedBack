@@ -78,7 +78,13 @@
   max-width: 400px;
 }
 .title {
-  width: 70%;
+  width: 20%;
+  margin: 0;
+}
+.skFlex {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
 }
 
 .titleShort {
@@ -90,11 +96,10 @@
   /* height: 230px; */
   width: 100%;
   background-color: #b4a9ca;
-  margin: 30px auto 55px;
-  padding: 20px;
+  margin: 10px auto 50px;
+  padding: 20px 40px 20px;
   position: relative;
   overflow: hidden;
-  max-width: 988px;
 }
 .skeletonSubject {
   background-color: #b4a9ca;
@@ -112,7 +117,6 @@
   padding: 15px 12px 30px;
   margin: 0 auto 50px;
   border-radius: 8px;
-  max-width: 988px;
 }
 
 .skeletonSubjectWrapper {
@@ -134,11 +138,6 @@
 
   .titleShort {
     margin-bottom: 30px;
-  }
-
-  .skeletonUsn {
-    padding: 20px 40px 20px;
-    margin-bottom: 50px;
   }
 }
 

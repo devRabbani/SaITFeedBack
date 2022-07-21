@@ -7,13 +7,16 @@ import { FaCaretLeft, FaVoteYea, FaHourglassStart } from 'react-icons/fa'
 import toast from 'react-hot-toast'
 
 const questions = [
-  'Faculty preparation for the class',
+  "Faculty's Preparation for the class",
+  "Faculty's punctuality to the class",
+  'Faculty provides relevant & useful course content',
   "Faculty's clarity in explaining the subject",
-  "Faculty's answer to your queries/question",
-  "Faculty's guidance for preparation of exam",
-  'Faculty provides relevant and usefull course material',
-  "Faculty's motivation towards extra curricular and technical activity",
-  'Overall perfomance',
+  "Faculty's use of examples to explain concepts",
+  "Faculty's answer to your queries /questions",
+  "Faculty's timely coverage of the topics / subject",
+  "Faculty's guidance for preparation of the exam",
+  "Faculty's control of the classroom",
+  "Faculty's courteous treatment of the students",
 ]
 
 const labels = [
@@ -57,6 +60,9 @@ export default function FeedbackQuestions({ teacherid, usn, subcode }) {
     4: 0,
     5: 0,
     6: 0,
+    7: 0,
+    8: 0,
+    9: 0,
   })
   //Pagination state
   const [[page, direction], setPage] = useState([0, 0])
@@ -138,8 +144,8 @@ export default function FeedbackQuestions({ teacherid, usn, subcode }) {
             Prev
           </button>
         )}
-        <p>{page + 1} / 7</p>
-        {isFinish && page === 6 && (
+        <p>{page + 1} / 10</p>
+        {isFinish && page === 9 && (
           <button
             disabled={isLoading}
             onClick={handleSubmit}

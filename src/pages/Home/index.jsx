@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import TeacherCard from '../../components/teacherCard'
 import useData from '../../hooks/useData'
 import SkeletonHome from '../../components/skeleton/skeletonHome'
+import useTitle from '../../hooks/useTitle'
 
 const usncardVariants = {
   hidden: {
@@ -61,9 +62,11 @@ const deptList = {
 }
 
 const Home = ({ user }) => {
+  useTitle('Home | SaITFeedback')
+
   // Getting User Data
-  const uid = user?.uid
-  const { userData, subLists } = useData(uid)
+  const usn = user?.usn
+  const { userData, subLists } = useData(usn)
   //-----States-------
   //Teacher List Data
   const completed = userData?.complete || []
@@ -96,7 +99,7 @@ const Home = ({ user }) => {
   return (
     <>
       {loading ? (
-        <div className='wrapper home'>
+        <div className='home'>
           <motion.div
             variants={usncardVariants}
             initial='hidden'
@@ -107,33 +110,33 @@ const Home = ({ user }) => {
             <p className='deptName'>
               DEPARTMENT OF {deptList[userData.branch]}
             </p>
-            <p className='usnNumber'>
-              <strong>USN :</strong>{' '}
-              <span className='usn'>{userData.usn.toUpperCase()}</span>
-            </p>
-            <hr />
-            <div className='semSec'>
-              <p>
-                <strong>Sem :</strong> {userData.sem} ,
+            <div className='topBar'>
+              <p className='usnNumber'>
+                <strong>USN :</strong>{' '}
+                <span className='usn'>{userData.usn.toUpperCase()}</span>
               </p>
               <p>
-                <strong>Sec :</strong> {userData.sec.toUpperCase()} ,
+                <strong>Sem :</strong> {userData.sem}
+              </p>
+              <p>
+                <strong>Sec :</strong> {userData.sec.toUpperCase()}
               </p>
               <p>
                 <strong> Branch :</strong> {userData.branch.toUpperCase()}
               </p>
+
+              {status === 0 ? (
+                <p>
+                  <strong>Feedback Status :</strong>{' '}
+                  <span className='status completed'>Completed</span>
+                </p>
+              ) : (
+                <p>
+                  <strong>Pending Feedback :</strong>{' '}
+                  <span className='status'>{status}</span>
+                </p>
+              )}
             </div>
-            {status === 0 ? (
-              <p>
-                <strong>Feedback Status :</strong>{' '}
-                <span className='status completed'>Completed</span>
-              </p>
-            ) : (
-              <p>
-                <strong>Pending Feedback :</strong>{' '}
-                <span className='status'>{status}</span>
-              </p>
-            )}
           </motion.div>
           <motion.div
             variants={wrappercardVariants}
@@ -151,6 +154,7 @@ const Home = ({ user }) => {
                   mark={completed.includes(subject.subcode)}
                   subjectData={subject}
                   usn={userData.usn}
+                  branch={deptList[userData.branch]}
                 />
               ))}
             </div>
