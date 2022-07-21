@@ -1,0 +1,15 @@
+.loaderPage {
+  z-index: 90;
+  width: 100%;
+  background-color: #e7def6;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+}
+
+.loaderImg {
+  width: 100px;
+}
