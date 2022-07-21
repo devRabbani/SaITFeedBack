@@ -9,19 +9,35 @@ import Footer from './components/footer'
 import { Toaster } from 'react-hot-toast'
 import Bottombar from './components/bottombar'
 import Webniar from './pages/Webniar'
+import HomeLayout from './layout/homelayout'
 
 const Feedback = lazy(() => import('./pages/Feedback'))
 const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
 
 const App = () => {
-  const { user } = useAuthListner()
+  const user = JSON.parse(sessionStorage.getItem('authUser'))
   const location = useLocation()
-  const scrollRef = useRef()
 
   return (
     <>
-      <Nav />
+      <Suspense fallback={<LoaderPage />}>
+        <HomeLayout user={user}>
+          <AnimatePresence exitBeforeEnter>
+            <Routes location={location} key={location.pathname}>
+              <Route element={<RequireAuth user={user} />}>
+                <Route path='/' element={<Home user={user} />} />
+                <Route path='/feedback' element={<Feedback />} />
+                <Route path='/webniar' element={<Webniar />} />
+              </Route>
+              <Route path='/login' element={<Login user={user} />} />
+            </Routes>
+          </AnimatePresence>
+        </HomeLayout>
+      </Suspense>
+      <Toaster />
+
+      {/* <Nav />
       <Toaster />
       <div ref={scrollRef} className='navMargin'></div>
       <div className='mainBody'>
@@ -59,7 +75,7 @@ const App = () => {
       </div>
       {(location.pathname === '/' || location.pathname === '/webniar') && (
         <Bottombar />
-      )}
+      )} */}
 
       {/* <Footer /> */}
     </>

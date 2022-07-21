@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import './feedback.style.css'
 import { motion } from 'framer-motion'
@@ -34,11 +34,11 @@ const mainvariants = {
   },
 }
 
-const Feedback = ({ scrollRef }) => {
+const Feedback = () => {
   //React Router tools
   const location = useLocation()
   const navigate = useNavigate()
-
+  const scrollRef = useRef()
   // const { name, sub, uid } = location.state;
 
   // ------States-------
@@ -49,6 +49,7 @@ const Feedback = ({ scrollRef }) => {
     subcode: '',
     teacherid: '',
     usn: '',
+    branch: '',
   })
 
   useTitle(
@@ -62,9 +63,10 @@ const Feedback = ({ scrollRef }) => {
     // If Location State is there
     if (location.state) {
       //Getting teacher data
-      const { teacherName, subfull, subcode, teacherid, usn } = location.state
+      const { teacherName, subfull, subcode, teacherid, usn, branch } =
+        location.state
 
-      setSubject({ teacherName, subfull, subcode, teacherid, usn })
+      setSubject({ teacherName, subfull, subcode, teacherid, usn, branch })
     } else {
       //Otherwise Navigate back to home
       navigate('/')
@@ -78,22 +80,30 @@ const Feedback = ({ scrollRef }) => {
 
   return (
     <>
-      <GoToHome />
       {/* <Nav />
       <div ref={scrollRef} className='navMargin'></div>
       <div className='mainBody'> */}
+      <div ref={scrollRef}></div>
       <motion.div className='feedback' variants={mainvariants} exit='exit'>
         <motion.div
           variants={teachercardVariants}
           initial='hidden'
           animate='visible'
           exit='exit'
-          className='wrapper teacherInfo'
+          className='usnCard'
         >
-          <p className='teacherName'>{subject.teacherName}</p>
-          <p className='sub'>{subject.subfull}</p>
+          <p className='deptName'>DEPARTMENT OF {subject.branch}</p>
+          <div className='topBar'>
+            <p>Name : {subject.teacherName}</p>
+            <p>
+              <strong>Sub Code :</strong> {subject.subcode}
+            </p>
+            <p>
+              <strong>Sub Name :</strong> {subject.subfull}
+            </p>
+          </div>
         </motion.div>
-        <div className='wrapper questionHeight'>
+        <div className='questionHeight'>
           <FeedbackQuestions
             teacherid={subject.teacherid}
             usn={subject.usn}

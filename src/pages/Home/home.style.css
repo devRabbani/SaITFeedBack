@@ -1,41 +1,21 @@
 .usnCard {
-  padding: 90px 15px 20px;
-  margin: 30px auto 55px;
+  padding: 78px 15px 20px;
+  margin: 10px 0 50px;
   border: 5px solid #f4f1ff;
   box-shadow: 2px 4px 10px 3px rgba(0, 0, 0, 0.2);
   position: relative;
-  max-width: 988px;
-}
-.home .usnCard hr {
-  width: 95%;
-  margin: 6px auto 15px;
-  height: 1px;
-  background-color: rgb(154, 155, 247);
-  border: none;
-  border-radius: 100px;
 }
 
-.home .usnNumber {
-  font-size: 1.8rem;
-  letter-spacing: 1px;
-  text-align: center;
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 1.35rem;
 }
+
 .home .usnNumber strong {
   font-weight: 600;
   color: rgb(56, 56, 56);
-}
-
-.home .semSec {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.usnCard p {
-  font-size: 1.1rem;
-}
-
-.semSec p {
-  margin: 0 10px 0 0;
 }
 
 .usnCard span.status {
@@ -57,7 +37,6 @@
   border-radius: 8px 8px 0 0;
   background-color: whitesmoke;
   /* min-height: 700px; */
-  max-width: 988px;
 }
 
 .teacherListWrapper {
@@ -119,12 +98,19 @@
 .teacherCard .right {
   width: 70%;
 }
-.teacherCard .teacherName {
-  font-size: 1.4rem;
+
+.teacherCard .subcodeName {
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 
-.teacherCard .subName {
-  margin: 9px 0 4px;
+.teacherCard .flexGroup {
+  display: flex;
+  align-items: center;
+  gap: 5px 10px;
+  flex-wrap: wrap;
+  font-size: 1.2rem;
+  margin: 7px 0 5px;
 }
 
 p.deptName {
@@ -145,13 +131,6 @@ p.deptName {
   .teacherListCard {
     padding: 15px 27px 45px;
   }
-  .home .usnNumber {
-    text-align: left;
-  }
-  .home .usnCard {
-    padding: 78px 40px 20px;
-    margin-bottom: 50px;
-  }
 }
 
 @media screen and (min-width: 850px) {
@@ -171,10 +150,5 @@ p.deptName {
 
   .teacherListCard .teacherCard {
     padding: 16px 13px;
-  }
-  .home .usnCard hr {
-    width: 100%;
-    margin: 7px auto 15px;
-    height: 2px;
   }
 }
