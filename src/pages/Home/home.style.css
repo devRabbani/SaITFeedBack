@@ -11,6 +11,7 @@
   align-items: center;
   gap: 20px;
   font-size: 1.35rem;
+  flex-wrap: wrap;
 }
 
 .home .usnNumber strong {
@@ -30,25 +31,23 @@
 }
 
 .teacherListCard {
-  padding: 15px 12px 45px;
+  padding: 20px 30px 70px;
   box-shadow: 0 0 16px 3px rgba(0, 0, 0, 0.3);
   margin: 0px auto 40px;
   border-top: 9px solid var(--secondary-purple);
   border-radius: 8px 8px 0 0;
   background-color: whitesmoke;
-  /* min-height: 700px; */
 }
 
 .teacherListWrapper {
   display: grid;
   grid-gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .teacherListWrapper .teacherCard {
-  padding: 16px 13px 16px 10px;
+  padding: 16px 13px;
   background-color: var(--secondary-blue);
-  /* background-color: #d3d3d3; */
-  /* margin: 18px 0; */
   display: flex;
   align-items: center;
   color: rgb(0, 0, 0);
@@ -60,7 +59,7 @@
   z-index: 7;
   border-left: 12px solid var(--secondary-blue);
   transform: scale(1);
-  /* box-shadow:  1px 2px 12px 2px rgb(0 0 0 / 40%); */
+  height: 100%;
 }
 
 .teacherListWrapper .teacherCard.done {
@@ -69,7 +68,6 @@
 }
 
 .teacherCard:hover {
-  /* background-color: #0a278d; */
   transform: scale(1.01);
 }
 
@@ -84,11 +82,9 @@
 .teacherListWrapper .teacherCard div.img {
   width: 75px;
   height: 75px;
-  /* width: 25%; */
   border-radius: 50%;
   background-color: white;
-  /* background-color:#2d2d2d;; */
-  margin-right: 15px;
+  margin-right: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -122,33 +118,12 @@ p.deptName {
   left: 0;
   right: 0;
   top: 0;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
 /* ---MEDIA QUERIES--- */
-
-@media screen and (min-width: 640px) {
-  .teacherListCard {
-    padding: 15px 27px 45px;
-  }
-}
-
-@media screen and (min-width: 850px) {
-  p.deptName {
-    font-size: 1.4rem;
-  }
+@media screen and (max-width: 1190px) {
   .teacherListWrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .teacherListCard {
-    padding: 20px 30px 70px;
-  }
-  .teacherListWrapper .teacherCard div.img {
-    margin-right: 20px;
-  }
-
-  .teacherListCard .teacherCard {
-    padding: 16px 13px;
+    grid-template-columns: 1fr;
   }
 }

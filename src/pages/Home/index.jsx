@@ -63,10 +63,10 @@ const deptList = {
 
 const Home = ({ user }) => {
   useTitle('Home | SaITFeedback')
-
+  console.log(user)
   // Getting User Data
-  const usn = user?.usn
-  const { userData, subLists } = useData(usn)
+  const uid = user?.uid
+  const { userData, subLists } = useData(uid)
   //-----States-------
   //Teacher List Data
   const completed = userData?.complete || []
