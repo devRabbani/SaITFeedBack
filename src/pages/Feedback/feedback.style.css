@@ -122,7 +122,7 @@ span.star {
   min-height: 500px;
 } */
 .feedback {
-  min-height: 93vh;
+  min-height: 90vh;
 }
 
 /* feedback button div */
@@ -203,6 +203,9 @@ span.star {
 .topBtnDiv button:active:not(.submit) svg {
   margin-left: -16px;
 }
+.topBtnDiv button:hover {
+  letter-spacing: 2px;
+}
 
 /* Media Q for height */
 @media screen and (min-height: 670px) {
@@ -218,22 +221,12 @@ span.star {
   .teacherInfo {
     margin: 30px auto 25px;
   }
-  .topBtnDiv {
-    margin: 25px auto 30px;
-  }
 }
 
 @media screen and (min-width: 630px) {
   .teacherInfo {
     padding: 20px 30px;
     margin: 30px auto 25px;
-  }
-
-  .feedback {
-    min-height: 90vh;
-  }
-  .topBtnDiv button:hover {
-    letter-spacing: 2px;
   }
 }
 

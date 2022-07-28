@@ -4,7 +4,6 @@ import './feedback.style.css'
 import { motion } from 'framer-motion'
 import useTitle from '../../hooks/useTitle'
 import FeedbackQuestions from '../../components/feedbackQuestions'
-import GoToHome from '../../components/goToHome'
 
 const teachercardVariants = {
   hidden: {
@@ -80,9 +79,6 @@ const Feedback = () => {
 
   return (
     <>
-      {/* <Nav />
-      <div ref={scrollRef} className='navMargin'></div>
-      <div className='mainBody'> */}
       <div ref={scrollRef}></div>
       <motion.div className='feedback' variants={mainvariants} exit='exit'>
         <motion.div
@@ -111,8 +107,6 @@ const Feedback = () => {
           />
         </div>
       </motion.div>
-      {/* </div>
-      <Footer desktop={true} /> */}
     </>
   )
 }
