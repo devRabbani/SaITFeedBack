@@ -10,6 +10,7 @@ h1.welcome {
   display: flex;
   align-items: center;
   min-height: 100vh;
+  margin-bottom: -330px;
 }
 
 .login form {
@@ -20,9 +21,9 @@ h1.welcome {
   width: 100%;
   max-width: 500px;
   box-shadow: 4px 4px 15px 0px rgba(0, 0, 0, 0.49);
-  padding: 52px 20px 37px;
+  padding: 48px 30px 40px;
   background-color: white;
-  border: 10px solid #987cca;
+  border: 10px solid #bba6df;
   margin: 0 auto;
 }
 
@@ -36,6 +37,28 @@ h1.welcome {
   margin-bottom: 1rem;
   position: relative;
   width: 100%;
+}
+
+.formDiv select {
+  width: 100%;
+  letter-spacing: 1px;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  outline: none;
+  padding: 0.7rem 1rem;
+  background: none;
+  z-index: 1;
+  font-size: 1.1rem;
+  color: rgb(49, 49, 49);
+  color: var(--input-color);
+}
+
+.formDiv select option {
+  background-color: var(--border-color);
+}
+
+.formDiv select option {
+  color: rgb(0, 0, 0);
 }
 
 .formDiv input {
@@ -105,6 +128,30 @@ h1.welcome {
   z-index: 2;
 }
 
+.errorMsg,
+.succesMsg {
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 15px;
+}
+
+.errorMsg {
+  color: rgb(212, 0, 0);
+}
+
+.succesMsg {
+  color: rgb(3, 189, 49);
+}
+
+.signOut {
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .login input::placeholder {
   text-transform: capitalize;
 }
@@ -112,9 +159,8 @@ h1.welcome {
   text-transform: uppercase;
 }
 
-@media screen and (min-width: 740px) {
-  .login form {
-    padding: 62px 40px 47px;
-    border-color: #987cca;
-  }
+.captchaText {
+  font-size: 0.8rem;
+  margin-top: 25px;
+  color: #8b8a8a;
 }

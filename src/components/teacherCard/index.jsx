@@ -12,19 +12,6 @@ const teachercardVariants = {
       duration: 0.45,
     },
   },
-  // tap: {
-  //   boxShadow: "none",
-  //   scale: 0.98,
-  // },
-  // hover: {
-  //   backgroundColor: "#2a305c",
-  //   x: 5,
-  //   boxShadow: "2px 3px 6px 0px  rgba(51, 51, 51, 0.226)",
-  //   transition: {
-  //     type: "spring",
-  //     stiffness: 150,
-  //   },
-  // },
 }
 
 const TeacherCard = ({ subjectData, usn, mark, branch }) => {
