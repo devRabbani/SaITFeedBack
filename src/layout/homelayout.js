@@ -1,25 +1,25 @@
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import {
   FaHome,
-  FaUserGraduate,
   FaUserTie,
-  FaBook,
   FaSignOutAlt,
   FaSignInAlt,
-  FaStar,
   FaLaptopCode,
 } from 'react-icons/fa'
 import './homeLayout.style.css'
 import { signOut } from 'firebase/auth'
-import { toast } from 'react-hot-toast'
 import { auth } from '../lib/firebase'
 import logo from '../assets/logo.webp'
+import toast from 'react-hot-toast'
 
 export default function HomeLayout({ children, user }) {
-  const navigate = useNavigate()
-  const handleSignout = () => {
-    sessionStorage.removeItem('authUser')
-    navigate('/login')
+  const handleSignout = async () => {
+    try {
+      await signOut(auth)
+    } catch (error) {
+      toast.error('Error in signout, Try again!')
+      console.log(error)
+    }
   }
   return (
     <>
@@ -48,14 +48,10 @@ export default function HomeLayout({ children, user }) {
                 <FaUserTie />
                 Admin
               </a>
-
-              <NavLink to='about' end={true}>
-                <FaBook /> About
-              </NavLink>
             </div>
             <div className='logOutDiv'>
               {user ? (
-                <button className='logOut' onClick={() => signOut(auth)}>
+                <button className='logOut' onClick={handleSignout}>
                   Logout <FaSignOutAlt />
                 </button>
               ) : (

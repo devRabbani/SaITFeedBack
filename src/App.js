@@ -5,13 +5,12 @@ import useAuthListner from './hooks/useAuthListner'
 import RequireAuth from './components/requireAuth'
 import LoaderPage from './components/loaderPage'
 import { Toaster } from 'react-hot-toast'
-import Webniar from './pages/Webniar'
 import HomeLayout from './layout/homelayout'
-import About from './pages/About'
 
 const Feedback = lazy(() => import('./pages/Feedback'))
 const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
+const Webniar = lazy(() => import('./pages/Webniar'))
 
 const App = () => {
   const { user } = useAuthListner()
@@ -28,7 +27,6 @@ const App = () => {
                 <Route path='/feedback' element={<Feedback />} />
                 <Route path='/webniar' element={<Webniar />} />
               </Route>
-              <Route path='/about' element={<About />} />
               <Route path='/login' element={<Login user={user} />} />
             </Routes>
           </AnimatePresence>
