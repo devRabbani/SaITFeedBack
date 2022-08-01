@@ -63,7 +63,6 @@ const deptList = {
 
 const Home = ({ user }) => {
   useTitle('Home | SaITFeedback')
-  console.log(user)
   // Getting User Data
   const uid = user?.uid
   const { userData, subLists } = useData(uid)
