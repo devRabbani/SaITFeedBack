@@ -128,6 +128,7 @@ export default function Docs() {
               href='https://canwebe.tech'
               target='_blank'
               rel='noopener noreferrer'
+              className='cwb'
             >
               CanWeBe!
             </a>
@@ -147,6 +148,7 @@ export default function Docs() {
               href='https://canwebe.tech'
               target='_blank'
               rel='noopener noreferrer'
+              className='cwb'
             >
               CanWeBe!
             </a>
