@@ -5,6 +5,7 @@ import {
   FaSignOutAlt,
   FaSignInAlt,
   FaLaptopCode,
+  FaInfo,
 } from 'react-icons/fa'
 import './homeLayout.style.css'
 import { signOut } from 'firebase/auth'
@@ -38,6 +39,10 @@ export default function HomeLayout({ children, user }) {
               <NavLink to='webniar' end={true}>
                 <FaLaptopCode />
                 Webniar
+              </NavLink>
+              <NavLink to='docs' end={true}>
+                <FaInfo />
+                Docs
               </NavLink>
 
               <a

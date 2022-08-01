@@ -29,7 +29,7 @@ const containerVariants = {
   },
 }
 
-const Login = ({ user }) => {
+const Login = ({ user, machine }) => {
   // Setting Title
   useTitle('Home | SaITFeedback')
 
@@ -67,7 +67,11 @@ const Login = ({ user }) => {
 
   // Submit
   const handleSubmit = async (e) => {
-    // e.preventDefault()
+    e.preventDefault()
+    if (!machine) {
+      toast.error('This system is not activated. Please See Docs')
+      return
+    }
     setLoading(true)
     const toastId = toast.loading('Collecting data from the database')
     const data = await studentWithUsn(usn)
@@ -169,7 +173,7 @@ const Login = ({ user }) => {
   }
 
   useEffect(() => {
-    if (user) {
+    if (!loading && user) {
       navigate('/')
     }
   }, [user])
