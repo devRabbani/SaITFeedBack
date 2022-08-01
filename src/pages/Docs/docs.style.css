@@ -1,0 +1,33 @@
+.docs {
+  padding: 40px 0;
+}
+
+.docs h2::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 150px;
+  background-color: blueviolet;
+  margin: 2px 0;
+}
+
+.docSection {
+  margin: 20px 0;
+}
+
+.docSection ol {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 5px 10px 18px;
+}
+
+.docSection a {
+  color: rgb(86, 37, 232);
+  font-weight: 600;
+}
+
+.docSection span.strong {
+  font-weight: 600;
+  color: rgb(95, 93, 101);
+}
