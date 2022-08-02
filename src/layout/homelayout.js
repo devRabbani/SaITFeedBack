@@ -32,6 +32,7 @@ export default function HomeLayout({ children, user }) {
                 <img src={logo} alt='logo' />
               </Link>
             </div>
+            <p className='sublogo'>Student Feedback</p>
             <div className='menuItemsWrapper'>
               <NavLink to='' end={true}>
                 <FaHome /> Home

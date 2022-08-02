@@ -6,13 +6,13 @@ import RequireAuth from './components/requireAuth'
 import LoaderPage from './components/loaderPage'
 import { Toaster } from 'react-hot-toast'
 import HomeLayout from './layout/homelayout'
-import Activate from './pages/Activate'
-import Docs from './pages/Docs'
 
 const Feedback = lazy(() => import('./pages/Feedback'))
 const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
 const Webniar = lazy(() => import('./pages/Webniar'))
+const Activate = lazy(() => import('./pages/Activate'))
+const Docs = lazy(() => import('./pages/Docs'))
 
 const App = () => {
   const { user, machine } = useAuthListner()

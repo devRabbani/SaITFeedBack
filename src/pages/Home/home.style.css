@@ -1,38 +1,10 @@
-.usnCard {
-  padding: 78px 15px 20px;
-  margin: 10px 0 50px;
-  border: 5px solid #f4f1ff;
-  box-shadow: 2px 4px 10px 3px rgba(0, 0, 0, 0.2);
+.home {
   position: relative;
+  padding-top: 8px;
 }
-
-.topBar {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 1.35rem;
-  flex-wrap: wrap;
-}
-
-.home .usnNumber strong {
-  font-weight: 600;
-  color: rgb(56, 56, 56);
-}
-
-.usnCard span.status {
-  color: rgb(211, 11, 11);
-}
-.usnCard span.status.completed {
-  color: #006900;
-}
-
-.usnCard span.usn {
-  color: var(--secondary-purple);
-}
-
 .teacherListCard {
   padding: 20px 30px 70px;
-  box-shadow: 0 0 16px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
   margin: 0px auto 40px;
   border-top: 9px solid var(--secondary-purple);
   border-radius: 8px 8px 0 0;
@@ -107,18 +79,6 @@
   flex-wrap: wrap;
   font-size: 1.2rem;
   margin: 7px 0 5px;
-}
-
-p.deptName {
-  color: white;
-  background-color: var(--secondary-blue);
-  text-align: center;
-  padding: 15px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  font-size: 1.4rem;
 }
 
 /* ---MEDIA QUERIES--- */
