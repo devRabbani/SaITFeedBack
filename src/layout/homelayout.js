@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import {
   FaHome,
   FaUserTie,
@@ -14,13 +14,10 @@ import logo from '../assets/logo.webp'
 import toast from 'react-hot-toast'
 
 export default function HomeLayout({ children, user }) {
-  const handleSignout = async () => {
-    try {
-      await signOut(auth)
-    } catch (error) {
-      toast.error('Error in signout, Try again!')
-      console.log(error)
-    }
+  const navigate = useNavigate()
+  const handleSignout = () => {
+    sessionStorage.removeItem('authUser')
+    navigate('/login')
   }
   return (
     <>

@@ -9,13 +9,13 @@ import {
 import { useEffect, useState } from 'react'
 import { db } from '../lib/firebase'
 
-const useData = (uid) => {
+const useData = (usn) => {
   const [userData, setUserData] = useState({})
   const [subLists, setSubLists] = useState([])
 
   useEffect(() => {
     const unsub = onSnapshot(
-      query(collection(db, 'students'), where('uid', '==', uid), limit(1)),
+      query(collection(db, 'students'), where('usn', '==', usn), limit(1)),
       (snapshot) => {
         if (!snapshot.empty) {
           setUserData(snapshot.docs[0].data())
@@ -23,7 +23,7 @@ const useData = (uid) => {
       }
     )
     return () => unsub()
-  }, [uid])
+  }, [usn])
 
   useEffect(() => {
     let unsub

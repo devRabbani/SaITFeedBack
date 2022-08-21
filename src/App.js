@@ -15,7 +15,8 @@ const Activate = lazy(() => import('./pages/Activate'))
 const Docs = lazy(() => import('./pages/Docs'))
 
 const App = () => {
-  const { user, machine } = useAuthListner()
+  const { machine } = useAuthListner()
+  const user = JSON.parse(sessionStorage.getItem('authUser'))
   const location = useLocation()
 
   return (
