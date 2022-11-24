@@ -16,17 +16,16 @@ const teachercardVariants = {
 
 const TeacherCard = ({ subjectData, usn, mark, branch }) => {
   // Object Destruction subjectData
-  const { teacherName, subfull, subshort, subcode, teacherid, img } =
-    subjectData
+  const { teacherName, subfull, subshort, subcode, id } = subjectData
 
   return (
     <motion.div variants={teachercardVariants}>
       <Link
-        to='feedback'
+        to="feedback"
         onClick={(e) => mark && e.preventDefault()}
         state={{
           teacherName,
-          teacherid,
+          id,
           subcode,
           subfull,
           usn,
@@ -34,18 +33,20 @@ const TeacherCard = ({ subjectData, usn, mark, branch }) => {
         }}
         className={`teacherCard ${mark && 'done'}`}
       >
-        <div className='img'>{img && <img src={img} alt='Avatar Img' />}</div>
-        <div className='right'>
-          <p className='subcodeName'>{subcode}</p>
-          <div className='flexGroup'>
-            <p className='teacherName'>{teacherName} ,</p>
-            <p className='subName'>
+        <div className="img">
+          <img src="/user.svg" alt="Avatar Img" />
+        </div>
+        <div className="right">
+          <p className="subcodeName">{subcode}</p>
+          <div className="flexGroup">
+            <p className="teacherName">{teacherName} ,</p>
+            <p className="subName">
               <strong>Subject : </strong>
               {subshort}
             </p>
           </div>
 
-          <p className='subFull'>{subfull}</p>
+          <p className="subFull">{subfull}</p>
         </div>
       </Link>
     </motion.div>

@@ -42,69 +42,50 @@ const Feedback = () => {
 
   // ------States-------
   //Name and Sub for teacher
-  const [subject, setSubject] = useState({
-    teacherName: '',
-    subfull: '',
-    subcode: '',
-    teacherid: '',
-    usn: '',
-    branch: '',
-  })
+  const { teacherName, subfull, subcode, id, usn, branch } =
+    location?.state || {}
 
   useTitle(
-    subject.teacherName
-      ? `${subject.teacherName} | SaITFeedback`
-      : 'Feedback | SaITFeedback'
+    teacherName ? `${teacherName} | SaITFeedback` : 'Feedback | SaITFeedback'
   )
 
   // Side Effect
   useEffect(() => {
-    // If Location State is there
-    if (location.state) {
-      //Getting teacher data
-      const { teacherName, subfull, subcode, teacherid, usn, branch } =
-        location.state
-
-      setSubject({ teacherName, subfull, subcode, teacherid, usn, branch })
-    } else {
-      //Otherwise Navigate back to home
+    // If Location State is not there
+    if (!location?.state) {
       navigate('/')
     }
-  }, [])
+  }, [navigate, location?.state])
 
   useEffect(() => {
     // Scroll to Top
-    scrollRef.current.scrollIntoView()
+    scrollRef.current?.scrollIntoView()
   }, [])
 
-  return (
+  return !location?.state ? null : (
     <>
       <div ref={scrollRef}></div>
-      <motion.div className='feedback' variants={mainvariants} exit='exit'>
+      <motion.div className="feedback" variants={mainvariants} exit="exit">
         <motion.div
           variants={teachercardVariants}
-          initial='hidden'
-          animate='visible'
-          exit='exit'
-          className='usnCard'
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="usnCard"
         >
-          <p className='deptName'>DEPARTMENT OF {subject.branch}</p>
-          <div className='topBar'>
-            <p>Name : {subject.teacherName}</p>
+          <p className="deptName">DEPARTMENT OF {branch}</p>
+          <div className="topBar">
+            <p>Name : {teacherName}</p>
             <p>
-              <strong>Sub Code :</strong> {subject.subcode}
+              <strong>Sub Code :</strong> {subcode}
             </p>
             <p>
-              <strong>Sub Name :</strong> {subject.subfull}
+              <strong>Sub Name :</strong> {subfull}
             </p>
           </div>
         </motion.div>
-        <div className='questionHeight'>
-          <FeedbackQuestions
-            teacherid={subject.teacherid}
-            usn={subject.usn}
-            subcode={subject.subcode}
-          />
+        <div className="questionHeight">
+          <FeedbackQuestions teacherid={id} usn={usn} subcode={subcode} />
         </div>
       </motion.div>
     </>

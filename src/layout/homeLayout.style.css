@@ -18,14 +18,14 @@
 }
 
 .mainContent {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   padding: 0px 50px 140px;
   padding-left: 330px;
   min-height: 100vh;
 }
 .sideLogo {
-  border-bottom: 1px solid #afb0b3;
-  padding: 15px;
+  border-bottom: 2px solid #afb0b3;
+  padding: 14px;
   font-size: 1.2rem;
   /* text-align: center; */
   font-weight: 600;
@@ -38,8 +38,17 @@
   margin-right: 3px;
 }
 
+.sublogo {
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  padding: 10px 0;
+  background-color: rgb(229, 229, 229);
+}
+
 .menuItemsWrapper {
   margin-top: 35px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   margin-bottom: auto;
