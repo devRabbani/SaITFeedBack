@@ -51,10 +51,10 @@ const Home = ({ user }) => {
   const [isDone, setIsDone] = useState(userData ? userData.status : false)
 
   // Loading state true means no loading
-  const loading = userData && subLists.length
+  const loading = userData && subLists
 
   // Pending Status
-  const status = subLists.length - completed.length
+  const status = subLists?.length - completed?.length
 
   // Function
   //Adding for completed review Toggle Complete
@@ -69,15 +69,16 @@ const Home = ({ user }) => {
   // Side Effect
   // Complete status
   useEffect(() => {
-    if (!isDone && subLists.length && status === 0) {
+    if (!isDone && subLists?.length && status === 0) {
       addStatus()
+      console.log('done submit')
     }
   }, [completed, subLists, isDone])
 
   return (
     <>
       {loading ? (
-        <div className='home'>
+        <div className="home">
           <TopInfoBar
             dept={deptList[userData.branch]}
             userData={userData}
@@ -85,24 +86,28 @@ const Home = ({ user }) => {
           />
           <motion.div
             variants={wrappercardVariants}
-            animate='visible'
-            initial='hidden'
-            exit='exit'
-            className='teacherListCard'
+            animate="visible"
+            initial="hidden"
+            exit="exit"
+            className="teacherListCard"
           >
             <h1>Teachers</h1>
             <hr />
-            <div className='teacherListWrapper'>
-              {subLists.map((subject, i) => (
-                <TeacherCard
-                  key={i}
-                  mark={completed.includes(subject.subcode)}
-                  subjectData={subject}
-                  usn={userData.usn}
-                  branch={deptList[userData.branch]}
-                />
-              ))}
-            </div>
+            {subLists?.length > 0 ? (
+              <div className="teacherListWrapper">
+                {subLists?.map((subject, i) => (
+                  <TeacherCard
+                    key={i}
+                    mark={completed.includes(subject.subcode)}
+                    subjectData={subject}
+                    usn={userData.usn}
+                    branch={deptList[userData.branch]}
+                  />
+                ))}
+              </div>
+            ) : (
+              <p className="noTeacherData">No Teachers Data Found</p>
+            )}
           </motion.div>
         </div>
       ) : (
