@@ -3,6 +3,7 @@ import {
   doc,
   limit,
   onSnapshot,
+  orderBy,
   query,
   where,
 } from 'firebase/firestore'
@@ -35,7 +36,8 @@ const useData = (uid) => {
         collection(db, 'teachers'),
         where('branch', '==', branch),
         where('sem', '==', sem),
-        where('sections', 'array-contains', sec)
+        where('sections', 'array-contains', sec),
+        orderBy('subcode')
       )
 
       unsub = onSnapshot(q, (snapshot) => {
