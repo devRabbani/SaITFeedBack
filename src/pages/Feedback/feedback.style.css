@@ -16,13 +16,6 @@
 /* Inside Feedback Section */
 .feedbackSection {
   text-align: center;
-  /* margin: 20px auto 40px;
-  padding: 25px 12px;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
-  border-radius: 7px;
-  background-color: #f7f7f7;
-  width: 98%;
-  max-width: 589px; */
 }
 
 .feedbackSection .answers {
@@ -39,27 +32,8 @@
   gap: 10px 20px;
 }
 .feedback .topBar p:nth-child(1) {
-  /* flex-basis: 100%; */
-  /* font-size: 1.5rem; */
   color: #6657e7;
   font-weight: 600;
-}
-
-.finishCard {
-  text-align: center;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
-  border-radius: 7px;
-  padding: 45px 15px;
-  font-size: 1.35rem;
-  margin: 20px auto;
-  width: 98%;
-  background-color: #f7f7f7;
-}
-
-.continue {
-  display: block;
-  width: 60% !important;
-  margin: 15px auto 0;
 }
 
 .question {
@@ -68,7 +42,6 @@
   font-weight: 500;
   color: rgb(71, 2, 88);
   line-height: 29px;
-  /* color: var(--secondary-purple); */
 }
 
 .answers {
@@ -83,15 +56,14 @@
   font-size: var(--normal-fontsize);
   margin: 7px auto;
   background-color: transparent;
-  border: 1.5px solid var(--secondary-purple);
+  border: 1px solid var(--secondary-purple);
+  outline: 1px solid transparent;
   color: var(--secondary-purple);
   border-radius: 7px;
   align-items: center;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  /* background-color: var(--secondary-purple);
-  color: white; */
 }
 
 .answers button:active {
@@ -101,6 +73,10 @@
 .answers button.active {
   background-color: #6357e6;
   color: white;
+}
+
+.answers button:hover {
+  outline-color: var(--secondary-purple);
 }
 
 .answers button:active span.star,
@@ -118,9 +94,7 @@ span.star {
   margin-bottom: -4px;
   color: rgb(196 171 213);
 }
-/* .questionHeight {
-  min-height: 500px;
-} */
+
 .feedback {
   min-height: 90vh;
 }
@@ -171,7 +145,6 @@ span.star {
 }
 
 .topBtnDiv button {
-  /* padding: 7px 0px; */
   height: 100%;
   width: 100%;
   background-color: var(--secondary-blue);
@@ -236,16 +209,3 @@ span.star {
     height: 40px;
   }
 }
-
-/* @media screen and (min-width: 1220px) {
-  .teacherInfo {
-    padding: 20px 30px;
-    margin: 28px auto;
-    width: 40%;
-  }
-
-  .feedbackSection {
-    padding: 35px 25px;
-    width: 60%;
-  }
-} */

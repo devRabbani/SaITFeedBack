@@ -137,7 +137,7 @@ export default function FeedbackQuestions({ teacherid, usn, subcode }) {
 
   return (
     <>
-      <div className='topBtnDiv'>
+      <div className="topBtnDiv">
         {page !== 0 && (
           <button onClick={() => handlePage(-1)}>
             <FaCaretLeft />
@@ -149,7 +149,7 @@ export default function FeedbackQuestions({ teacherid, usn, subcode }) {
           <button
             disabled={isLoading}
             onClick={handleSubmit}
-            className='submit'
+            className="submit"
           >
             {isLoading ? (
               <FaHourglassStart />
@@ -164,16 +164,16 @@ export default function FeedbackQuestions({ teacherid, usn, subcode }) {
       </div>
       <AnimatePresence exitBeforeEnter custom={direction}>
         <motion.div
-          className='feedbackSection'
+          className="feedbackSection"
           variants={feedbackVariants}
-          initial='hidden'
-          animate='visible'
-          exit='exit'
+          initial="hidden"
+          animate="visible"
+          exit="exit"
           custom={direction}
           key={page}
         >
-          <p className='question'>{questions[page]}</p>
-          <div className='answers'>
+          <p className="question">{questions[page]}</p>
+          <div className="answers">
             {labels.map((item, i) => (
               <Options
                 label={item.label}
@@ -186,18 +186,6 @@ export default function FeedbackQuestions({ teacherid, usn, subcode }) {
           </div>
         </motion.div>
       </AnimatePresence>
-      {/* <div className='feedbackBtnDiv'>
-        {page !== 0 && <button onClick={() => handlePage(-1)}>Prev</button>}
-        {isFinish && page === 6 && (
-          <button
-            disabled={isLoading}
-            onClick={handleSubmit}
-            className='submit'
-          >
-            {isLoading ? 'Loading..' : 'Submit'}
-          </button>
-        )}
-      </div> */}
     </>
   )
 }

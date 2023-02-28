@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
-import { auth, firebaseApp } from '../lib/firebase'
+import { auth } from '../lib/firebase'
 
 export default function useAuthListner() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('authUser')))
@@ -16,11 +16,9 @@ export default function useAuthListner() {
         if (method === 'password') {
           localStorage.setItem('machine', JSON.stringify(authuser))
           setMachine(authuser)
-          console.count('Setup machine Complete')
         } else {
           localStorage.setItem('authUser', JSON.stringify(authuser))
           setUser(authuser)
-          console.count('Set User Complete')
         }
       } else {
         // not have authuser means logout
@@ -30,7 +28,7 @@ export default function useAuthListner() {
     })
 
     return () => listner()
-  }, [firebaseApp])
+  }, [])
 
   return { user, machine }
 }

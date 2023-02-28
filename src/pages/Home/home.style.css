@@ -28,7 +28,6 @@
   min-height: 129.8px;
   color: rgb(228, 220, 220);
   box-shadow: var(--light-boxshadow);
-  /* transition: all 0.3s ease-in-out; */
   z-index: 7;
   border-left: 12px solid var(--secondary-blue);
   transform: scale(1);
@@ -36,8 +35,8 @@
 }
 
 .teacherListWrapper .teacherCard.done {
-  border-color: var(--secondary-blue);
-  background-color: #006900;
+  border-color: #6b73b5;
+  background-color: #006957;
 }
 
 .teacherCard:hover .subcodeName {
