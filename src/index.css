@@ -26,7 +26,7 @@ html {
   --input-color: #80868b;
   --border-color: #dadce0;
   --form-border: ##cedcf1;
-  --body-background: #e8dff7;
+  --body-background: #eaeff7;
   --gray-1: #808999;
   --secondary-purple: #845ec2;
   --secondary-blue: #2f4fc1;
@@ -76,4 +76,59 @@ a {
 .mainBody {
   min-height: 93vh;
   padding-top: 56px;
+}
+
+.admin {
+  max-width: 1900px;
+  width: 100%;
+  margin-inline: auto;
+}
+
+/* Top Info Bar*/
+.usnCard {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0px 0px 20px;
+  margin: 0px 0px 50px;
+  border: 5px solid #f4f1ff;
+  box-shadow: 2px 4px 19px 3px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  z-index: 99;
+  background-color: #eaeff7;
+  right: 0;
+  top: 8px;
+  left: 0;
+  /* left: 270px; */
+}
+
+p.deptName {
+  color: white;
+  background-color: #8492c1;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.4rem;
+}
+
+.topBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  font-size: 1.35rem;
+  padding: 0 15px;
+}
+.usnNumber strong {
+  font-weight: 600;
+  color: rgb(56, 56, 56);
+}
+.usnCard span.status {
+  color: rgb(211, 11, 11);
+}
+.usnCard span.status.completed {
+  color: #006900;
+}
+
+.usnCard span.usn {
+  color: var(--secondary-purple);
 }

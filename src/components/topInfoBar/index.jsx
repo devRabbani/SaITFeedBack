@@ -1,4 +1,3 @@
-import './topInfoBar.style.css'
 import { motion } from 'framer-motion'
 
 const usncardVariants = {
@@ -27,16 +26,16 @@ export default function TopInfoBar({ dept, userData, status }) {
   return (
     <motion.div
       variants={usncardVariants}
-      initial='hidden'
-      animate='visible'
-      exit='exit'
-      className='usnCard'
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="usnCard"
     >
-      <p className='deptName'>DEPARTMENT OF {dept}</p>
-      <div className='topBar'>
-        <p className='usnNumber'>
+      <p className="deptName">DEPARTMENT OF {dept}</p>
+      <div className="topBar">
+        <p className="usnNumber">
           <strong>USN :</strong>{' '}
-          <span className='usn'>{userData.usn.toUpperCase()}</span>
+          <span className="usn">{userData.usn.toUpperCase()}</span>
         </p>
         <p>
           <strong>Sem :</strong> {userData.sem}
@@ -51,12 +50,12 @@ export default function TopInfoBar({ dept, userData, status }) {
         {status === 0 ? (
           <p>
             <strong>Feedback Status :</strong>{' '}
-            <span className='status completed'>Completed</span>
+            <span className="status completed">Completed</span>
           </p>
         ) : (
           <p>
             <strong>Pending Feedback :</strong>{' '}
-            <span className='status'>{status}</span>
+            <span className="status">{status}</span>
           </p>
         )}
       </div>
