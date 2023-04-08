@@ -24,63 +24,63 @@ export default function HomeLayout({ children, user }) {
   }
   return (
     <>
-      <div className='admin'>
-        <div className='adminGrid'>
-          <div className='sideMenu'>
-            <div className='sideLogo'>
-              <Link to='/' className='logo'>
-                <img src={logo} alt='logo' />
+      <div className="admin">
+        <div className="adminGrid">
+          <div className="sideMenu">
+            <div className="sideLogo">
+              <Link to="/" className="logo">
+                <img src={logo} alt="logo" />
               </Link>
             </div>
-            <p className='sublogo'>Student Feedback</p>
-            <div className='menuItemsWrapper'>
-              <NavLink to='' end={true}>
+            <p className="sublogo">Student Feedback</p>
+            <div className="menuItemsWrapper">
+              <NavLink to="" end={true}>
                 <FaHome /> Home
               </NavLink>
-              <NavLink to='webniar' end={true}>
+              <NavLink to="webniar" end={true}>
                 <FaLaptopCode />
                 Webniar
               </NavLink>
-              <NavLink to='docs' end={true}>
+              <NavLink to="docs" end={true}>
                 <FaInfo />
                 Docs
               </NavLink>
 
               <a
-                href='https://saitdashboard.netlify.app'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://saitdashboard.netlify.app"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaUserTie />
                 Admin
               </a>
             </div>
-            <div className='logOutDiv'>
+            <div className="logOutDiv">
               {user ? (
-                <button className='logOut' onClick={handleSignout}>
+                <button className="logOut" onClick={handleSignout}>
                   Logout <FaSignOutAlt />
                 </button>
               ) : (
-                <Link to='/login'>
+                <Link to="/login">
                   Login <FaSignInAlt />
                 </Link>
               )}
             </div>
-            <p className='developer'>
+            <p className="developer">
               Developed By{' '}
               <a
-                href='https://canwebe.tech'
-                target='_blank'
-                rel='noopener noreferrer'
+                href="https://www.canwebe.in"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 CanWeBe!
               </a>
             </p>
           </div>
-          <div className='mainContent'>{children}</div>
+          <div className="mainContent">{children}</div>
         </div>
       </div>
-      <div className='mobileLayout wrapper'>
+      <div className="mobileLayout wrapper">
         Not supported in this width.Please view in full screen
       </div>
     </>
